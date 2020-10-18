@@ -1,0 +1,41 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>登录</title>
+    <link href="css/DengLu.css" rel="stylesheet">
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/DengLu.js"></script>
+
+</head>
+<body>
+<div id="DengLuForm">
+<form action="AjaxLoginServlet" method="POST">
+
+<p>
+    请登录：
+</p>
+<p>
+    <label for="usename" id="labelusename">用户名：</label>
+    <input id="usename" type="text" name="usename">
+</p>
+<p>
+    <label for="password" id="labelpassword">密 &nbsp; 码：</label>
+    <input id="password" type="password" name="password">
+</p>
+<p>
+    <label for="vcode"id="labelvcode">验证码：</label>
+    <input id="vcode" type="text" name="vcode">
+    <img id="vcodeImg" src="CreatVcodeImageServlet" onclick="changeImg()" id="verifyCode" title="看不清换一个">
+</p>
+    <p>
+        <input type="radio" name="loginradio"id="loginradio">
+        <label for="loginradio" id="checkedlabel">一周内免登录</label>
+        <a href="register.html" >点我注册</a>
+    </p>
+    <p></p>
+<p>
+    <input id="button" type="button" onclick="ajaxchecklogin()" value="登录">
+</p>
+    <span id="error"></span>
+</form>
+</div>
+</body></html>
