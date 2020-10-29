@@ -27,6 +27,9 @@ public class GetPower {
             resource=new Resource(resultSet.getInt("resourceid"),resultSet.getString("resourceName"),resultSet.getString("url"));
             resources.add(resource);
         }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
         return resources;
     }
 }

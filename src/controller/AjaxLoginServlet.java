@@ -20,28 +20,29 @@ public class AjaxLoginServlet extends HttpServlet {
         String useName_enter = request.getParameter("usename");
         String passWord_enter = request.getParameter("password");
         String vcode_enter = request.getParameter("vcode");
-        String loginradio = request.getParameter("loginradio");
+        String loginradio=request.getParameter("loginradio");
         HttpSession session = request.getSession();
         String vcode = (String) session.getAttribute("vcode");
         UserDao userDao = new UserDao();
         User user = null;
         try {
             user = userDao.getUser(useName_enter);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         Map<String, Object> map = new HashMap<String, Object>();
         if (!vcode_enter.equalsIgnoreCase(vcode)) {
             map.put("code", 1);
-            map.put("info", "error");
+            map.put("info", "验证码错误");
         } else {
             if (user == null) {
                 map.put("code", 2);
-                map.put("info", "error");
+                map.put("info", "用户名错误");
             } else {
                 if (!passWord_enter.equals(user.getPassWord())) {
                     map.put("code", 3);
-                    map.put("info", "error");
+                    map.put("info", "密码错误");
                 } else {
                     if (loginradio != null) {
                         Cookie passwordcookie = new Cookie("password", user.getPassWord());
@@ -52,14 +53,14 @@ public class AjaxLoginServlet extends HttpServlet {
                         response.addCookie(usernamecookie);
                     }
                     map.put("code",0);
-                    map.put("info", "yes");
+                    map.put("info", "正在登陆");
                 }
             }
             }
-            response.setContentType("text/html;charset=utf-8");
+
             System.out.println(map);
             String jsonstr=new Gson().toJson(map);
-            System.out.println(jsonstr);
+            response.setContentType("text/html;charset=utf-8");
             PrintWriter out = response.getWriter();
             out.print(jsonstr);
             out.flush();

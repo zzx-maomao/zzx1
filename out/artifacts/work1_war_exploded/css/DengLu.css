@@ -5,17 +5,36 @@ body{
 }
 #DengLuForm{
     width: 380px;
-    height: 265px;
+    height: 310px;
     background-color: beige;
     margin: 200px auto;
-    padding-top: 30px;
+    padding-top: 20px;
     border: 1px solid #cccccc;
     border-radius: 1em;
 }
 #DengLuForm p{
     text-indent: 45px;
 }
+.err {
+    font-size: 12px;
+    color: red;
+    display: block;
+    height: 7px;
+    line-height: 16px;
+}
 
+span {
+    font-size: 12px;
+    color: #5365A6;
+}
+#error{
+    margin-left: 50px;
+}
+#register{
+    float: right;
+    margin-right: 52px;
+    font-size: 12px;
+}
 #usename,
 #password,
 #vcode{

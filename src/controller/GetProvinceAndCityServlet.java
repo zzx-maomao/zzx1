@@ -20,16 +20,18 @@ public class GetProvinceAndCityServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          String province=request.getParameter("province");
          String jsonstr="";
-        GetProvinceAndCity getProvinceAndCity=new GetProvinceAndCity();
-        List<Province> provincelist=new ArrayList<>();
-        List<City>cityList=new ArrayList<>();
+         GetProvinceAndCity getProvinceAndCity=new GetProvinceAndCity();
+         List<Province> provincelist=new ArrayList<>();
+         List<City>cityList=new ArrayList<>();
         if (province==null){
             try {
                 provincelist= (ArrayList<Province>) getProvinceAndCity.GetProvince();
+                System.out.println(provincelist);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             jsonstr=new Gson().toJson(provincelist);
+            System.out.println(jsonstr);
         }else{
             try {
                 cityList=getProvinceAndCity.GetCity(province);
@@ -38,6 +40,7 @@ public class GetProvinceAndCityServlet extends HttpServlet {
             }
             jsonstr=new Gson().toJson(cityList);
         }
+        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(jsonstr);
         out.flush();

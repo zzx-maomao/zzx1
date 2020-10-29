@@ -22,6 +22,8 @@ public List<Province> GetProvince() throws Exception {
         Province province=new Province(resultSet.getInt("id"),resultSet.getString("name"));
         provinceslist.add(province);
     }
+    resultSet.close();
+    preparedStatement.close();
     connection.close();
     return provinceslist;
 }
@@ -29,7 +31,7 @@ public List<Province> GetProvince() throws Exception {
         List<City> citylist=new ArrayList<>();
         Jdbc jdbc = new Jdbc();
         Connection connection = jdbc.getConnection();
-        String SQL = "SELECT * FROM t_city WHERE id in(SELECT id FROM t_province WHERE name =?)";
+        String SQL = "SELECT * FROM t_city WHERE provinceid in(SELECT id FROM t_province WHERE name =?)";
         PreparedStatement preparedStatement = connection.prepareStatement(SQL);
         preparedStatement.setString(1,provincename);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -37,6 +39,9 @@ public List<Province> GetProvince() throws Exception {
             City city=new City(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getInt("provinceid"));
             citylist.add(city);
         }
+
+        resultSet.close();
+        preparedStatement.close();
         connection.close();
         return citylist;
     }

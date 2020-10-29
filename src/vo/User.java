@@ -4,6 +4,9 @@ public class User {
     private String useName;
     private String passWord;
     private String charName;
+    private String email;
+    private String province;
+    private String city;
 
 
     public User(String usename, String password, String charname) {
@@ -11,6 +14,14 @@ public class User {
         this.setPassWord(password);
         this.setCharName(charname);
 
+    }
+    public User(String usename, String password, String charname,String email,String province,String city) {
+        this.setUseName(usename);
+        this.setPassWord(password);
+        this.setCharName(charname);
+        this.setEmail(email);
+        this.setProvince(province);
+        this.setCity(city);
     }
 
     public String getUseName() {
@@ -37,5 +48,27 @@ public class User {
         this.charName = charName;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

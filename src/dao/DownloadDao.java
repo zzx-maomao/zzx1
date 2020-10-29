@@ -23,6 +23,8 @@ public class DownloadDao {
             downloadList.add(download);
 
         }
+        resultSet.close();
+        preparedStatement.close();
         connection.close();
         return downloadList;
     }
@@ -38,6 +40,8 @@ public class DownloadDao {
         while (resultSet.next()){
             download=new Download(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getString("path"),resultSet.getString("description"),fileSizeTransfer(resultSet.getLong("size")),resultSet.getInt("star"),resultSet.getString("image"),resultSet.getDate("time"));
         }
+        resultSet.close();
+        preparedStatement.close();
         connection.close();
         return download;
     }

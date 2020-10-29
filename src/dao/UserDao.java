@@ -23,7 +23,14 @@ public class UserDao {
             user = new User(username, resultSet.getString("password"), resultSet.getString("charName"));
 
         }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
         return user;
+
     }
+
+
+
 }
 

@@ -32,7 +32,5 @@
         <jarDirectory url="file://$MODULE_DIR$/web/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="mysql-connector-java-5.0.4-bin" level="project" />
-    <orderEntry type="library" exported="" name="jstl-1.2" level="project" />
   </component>
 </module>

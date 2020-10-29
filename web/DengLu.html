@@ -16,26 +16,29 @@
 <p>
     <label for="usename" id="labelusename">用户名：</label>
     <input id="usename" type="text" name="usename">
+    <span class="err" id="usenameerr"></span>
 </p>
 <p>
     <label for="password" id="labelpassword">密 &nbsp; 码：</label>
     <input id="password" type="password" name="password">
+    <span class="err" id="passworderr"></span>
 </p>
 <p>
     <label for="vcode"id="labelvcode">验证码：</label>
     <input id="vcode" type="text" name="vcode">
     <img id="vcodeImg" src="CreatVcodeImageServlet" onclick="changeImg()" id="verifyCode" title="看不清换一个">
+    <span class="err" id="vcodeerr"></span>
 </p>
     <p>
         <input type="radio" name="loginradio"id="loginradio">
         <label for="loginradio" id="checkedlabel">一周内免登录</label>
-        <a href="register.html" >点我注册</a>
+        <a  id="register" href="register.html" >点我注册</a>
     </p>
     <p></p>
 <p>
     <input id="button" type="button" onclick="ajaxchecklogin()" value="登录">
 </p>
-    <span id="error"></span>
+    <span class="err" id="error"></span>
 </form>
 </div>
 </body></html>
